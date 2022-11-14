@@ -1,0 +1,222 @@
+<google-map [center]="center" (mapClick)="addMarker()" >
+    <map-marker
+      *ngFor="let marker of markers"
+      [position]="marker.position"
+      [label]="marker.label"
+      [title]="marker.title"
+      [options]="marker.options"
+    > </map-marker>
+</google-map>
+
+<!-- Table -->
+ 
+<h2 class="mat-title">Best Flights</h2>
+<table class="table"  [dataSource]="datasource" mat-table class="mat-elevation-z8">
+  
+    <!-- Origin Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> Origin </th>
+      <td mat-cell *matCellDef="let element"> {{element.legs[0].origin.name}} </td>
+
+    </ng-container>
+  
+    <!-- Destination Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Destination </th>
+      <td mat-cell *matCellDef="let element"> {{element.legs[0].destination.name}} </td>
+    </ng-container>
+
+    <!-- Departure Column -->
+    <ng-container matColumnDef="depart">
+        <th mat-header-cell *matHeaderCellDef> Departure time </th>
+        <td mat-cell *matCellDef="let element"> {{element.legs[0].departure}} </td>
+    </ng-container>
+
+    <!-- Arrival Column -->
+    <ng-container matColumnDef="arrival">
+        <th mat-header-cell *matHeaderCellDef> Arrival time </th>
+        <td mat-cell *matCellDef="let element"> {{element.legs[0].arrival}} </td>
+    </ng-container>
+
+
+    <!-- Destination Column -->
+    <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef> Time in mins </th>
+        <td mat-cell *matCellDef="let element"> {{element.legs[0].durationInMinutes}} </td>
+    </ng-container>
+  
+    <!-- Price Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Price($) </th>
+      <td mat-cell *matCellDef="let element"> {{element.price.formatted}} </td>
+    </ng-container>
+  
+    <!-- Link Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Link </th>
+      
+      <td mat-cell *matCellDef="let element"> <a href={{element.deeplink}}>Link</a> </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+  
+<h2 class="mat-title">Fastest Flights</h2>
+<table class="table"  [dataSource]="datasource1" mat-table class="mat-elevation-z8">
+  
+  <!-- Origin Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> Origin </th>
+    <td mat-cell *matCellDef="let element"> {{element.legs[0].origin.name}} </td>
+
+  </ng-container>
+
+  <!-- Destination Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Destination </th>
+    <td mat-cell *matCellDef="let element"> {{element.legs[0].destination.name}} </td>
+  </ng-container>
+
+  <!-- Departure Column -->
+  <ng-container matColumnDef="depart">
+      <th mat-header-cell *matHeaderCellDef> Departure time </th>
+      <td mat-cell *matCellDef="let element"> {{element.legs[0].departure}} </td>
+  </ng-container>
+
+  <!-- Arrival Column -->
+  <ng-container matColumnDef="arrival">
+      <th mat-header-cell *matHeaderCellDef> Arrival time </th>
+      <td mat-cell *matCellDef="let element"> {{element.legs[0].arrival}} </td>
+  </ng-container>
+
+
+  <!-- Destination Column -->
+  <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef> Time in mins </th>
+      <td mat-cell *matCellDef="let element"> {{element.legs[0].durationInMinutes}} </td>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef> Price($) </th>
+    <td mat-cell *matCellDef="let element"> {{element.price.formatted}} </td>
+  </ng-container>
+
+  <!-- Link Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef> Link </th>
+    
+    <td mat-cell *matCellDef="let element"> <a href={{element.deeplink}}>Link</a> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+<h2 class="mat-title">Cheapest Flights</h2>
+<table class="table"  [dataSource]="datasource2" mat-table class="mat-elevation-z8">
+  
+  <!-- Origin Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> Origin </th>
+    <td mat-cell *matCellDef="let element"> {{element.legs[0].origin.name}} </td>
+
+  </ng-container>
+
+  <!-- Destination Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Destination </th>
+    <td mat-cell *matCellDef="let element"> {{element.legs[0].destination.name}} </td>
+  </ng-container>
+
+  <!-- Departure Column -->
+  <ng-container matColumnDef="depart">
+      <th mat-header-cell *matHeaderCellDef> Departure time </th>
+      <td mat-cell *matCellDef="let element"> {{element.legs[0].departure}} </td>
+  </ng-container>
+
+  <!-- Arrival Column -->
+  <ng-container matColumnDef="arrival">
+      <th mat-header-cell *matHeaderCellDef> Arrival time </th>
+      <td mat-cell *matCellDef="let element"> {{element.legs[0].arrival}} </td>
+  </ng-container>
+
+
+  <!-- Destination Column -->
+  <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef> Time in mins </th>
+      <td mat-cell *matCellDef="let element"> {{element.legs[0].durationInMinutes}} </td>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef> Price($) </th>
+    <td mat-cell *matCellDef="let element"> {{element.price.formatted}} </td>
+  </ng-container>
+
+  <!-- Link Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef> Link </th>
+    
+    <td mat-cell *matCellDef="let element"> <a href={{element.deeplink}}>Link</a> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+<h2 class="mat-title">Direct Flights</h2>
+<table class="table"  [dataSource]="datasource3" mat-table class="mat-elevation-z8">
+  
+  <!-- Origin Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> Origin </th>
+    <td mat-cell *matCellDef="let element"> {{element.legs[0].origin.name}} </td>
+
+  </ng-container>
+
+  <!-- Destination Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Destination </th>
+    <td mat-cell *matCellDef="let element"> {{element.legs[0].destination.name}} </td>
+  </ng-container>
+
+  <!-- Departure Column -->
+  <ng-container matColumnDef="depart">
+      <th mat-header-cell *matHeaderCellDef> Departure time </th>
+      <td mat-cell *matCellDef="let element"> {{element.legs[0].departure}} </td>
+  </ng-container>
+
+  <!-- Arrival Column -->
+  <ng-container matColumnDef="arrival">
+      <th mat-header-cell *matHeaderCellDef> Arrival time </th>
+      <td mat-cell *matCellDef="let element"> {{element.legs[0].arrival}} </td>
+  </ng-container>
+
+
+  <!-- Destination Column -->
+  <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef> Time in mins </th>
+      <td mat-cell *matCellDef="let element"> {{element.legs[0].durationInMinutes}} </td>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef> Price($) </th>
+    <td mat-cell *matCellDef="let element"> {{element.price.formatted}} </td>
+  </ng-container>
+
+  <!-- Link Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef> Link </th>
+    
+    <td mat-cell *matCellDef="let element"> <a href={{element.deeplink}}>Link</a> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<!-- End -->

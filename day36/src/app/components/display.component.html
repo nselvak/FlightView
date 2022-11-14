@@ -1,0 +1,79 @@
+
+
+<div style="text-align:center">
+    <h1 class="mat-title">
+      <mat-icon>flight_takeoff</mat-icon>
+      <span></span>
+      <span></span>
+      Flight Viewer
+      <span></span>
+      <span></span>
+      <mat-icon>flight_land</mat-icon>
+    </h1>
+
+    <div class="add-list">
+      <button type="button" mat-raised-button color="primary" (click)="add()">Login</button>
+      <span></span>
+      <span></span>
+      <span></span>
+      <button  type="button" mat-raised-button color="accent" (click)="list()">Register</button>
+    </div>
+
+    <div *ngIf="registerF">
+      Registration failed! Email already exists
+    </div>
+
+    <div *ngIf="loginF">
+      Login failed! User doesnt exist or password is wrong
+    </div>
+    
+
+    <form [formGroup]="form" (ngSubmit)="processForm()" *ngIf="addItem">
+
+      <div>
+          <!-- <label for="email">Email: </label> -->
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput type="text" id="email" placeholder="Enter Email" formControlName="email">
+          </mat-form-field>
+          
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" id="password" size="25" placeholder="Enter password" formControlName="password">
+        </mat-form-field>
+          <!-- <label for="password">Password: </label>
+          <input matInput type="password" id="password" size="25" placeholder="Enter password" formControlName="password"> -->
+      </div>
+
+      <div>
+      <button mat-raised-button color="warn" [disabled]="form.invalid" type="submit" >Login</button>
+      </div>
+
+    </form>
+
+    <form [formGroup]="form2" (ngSubmit)="processRegister()" *ngIf="listItems">
+
+      <div>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput type="text" id="email" placeholder="Enter Email" formControlName="email">
+        </mat-form-field>
+        
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" id="password" size="25" placeholder="Enter password" formControlName="password">
+      </mat-form-field>
+    </div>
+
+    <div>
+    <button mat-raised-button color="warn" [disabled]="form2.invalid" type="submit" >Register</button>
+    </div>
+
+    </form>
+</div>
+
+ 

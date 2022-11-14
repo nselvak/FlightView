@@ -1,0 +1,58 @@
+<div style="text-align:center">
+    
+  <h2 class="mat-title">
+    <mat-icon>work_off</mat-icon>
+    <span></span>
+    <span></span>
+    Flight Search
+    <span></span>
+    <span></span>
+    <span></span>
+    <mat-icon>work</mat-icon>
+  </h2>
+
+  <form [formGroup]="form1" (ngSubmit)="post()">
+
+    <div>
+      <mat-form-field>
+        <mat-label>No. of Adults</mat-label>
+        <input matInput type="number" id="adult" placeholder="Enter Number of adults" formControlName="adult">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Starting airport</mat-label>
+        <input matInput type="text" id="text"  placeholder="Enter IATA" formControlName="origin">
+        <mat-hint>City IATA</mat-hint>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Destination</mat-label>
+        <input matInput type="text" id="destination" placeholder="Enter IATA" formControlName="destination">
+        <mat-hint>City IATA</mat-hint>
+      </mat-form-field>
+      
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput formControlName="date" [matDatepicker]="picker">
+        <mat-hint>DD-MM-YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+    </div>
+
+    <div>
+      <button mat-icon-button color="accent" type="button" [routerLink]="['/']"><mat-icon>home</mat-icon></button>
+      <button mat-icon-button color="primary" [disabled]="form1.invalid" type="submit"><mat-icon>search</mat-icon></button>
+    </div>
+
+  </form>
+
+</div>
+
+
+
